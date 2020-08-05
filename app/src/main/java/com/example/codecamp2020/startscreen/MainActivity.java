@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ImageView;
 
+import com.example.codecamp2020.emergency.displayDoctorsActivity;
 import com.example.codecamp2020.map.MapsActivity;
 import com.example.codecamp2020.R;
 
@@ -33,8 +34,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.emergencyButton:
-                Intent i = new Intent(MainActivity.this, MapsActivity.class);
-                //Intent i = new Intent(MainActivity.this, displayDoctorsActivity.class);
+                //Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                Intent i = new Intent(MainActivity.this, displayDoctorsActivity.class);
                 startActivity(i);
                 //TODO implement
                 break;
