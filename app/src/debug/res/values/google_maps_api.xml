@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=EB:98:B1:05:75:C2:7F:8E:EB:22:9E:4F:9F:15:DB:4A:0C:BB:1C:FF%3Bcom.example.codecamp2020
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.example.codecamp2020
+
+    SHA-1 certificate fingerprint:
+    EB:98:B1:05:75:C2:7F:8E:EB:22:9E:4F:9F:15:DB:4A:0C:BB:1C:FF
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDJlbFBrltdxCoifK_y_mC9wWh8-qRoooQ</string>
+</resources>
