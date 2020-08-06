@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,27 +34,34 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/advices"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="367dp"
-            android:contextClickable="true"
-            android:text="advicesPlaceholder"
-            android:textAlignment="center" />
+
+            android:layout_marginHorizontal="2dp"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="5"
+            app:iss_delay="0"
+            app:iss_period="2000"
+            app:iss_selected_dot="@drawable/default_selected_dot"
+            app:iss_text_align="CENTER"
+            app:iss_title_background="@drawable/gradient"
+            app:iss_unselected_dot="@drawable/default_unselected_dot" />
 
         <TextView
             android:id="@+id/infectionTextView"
             android:layout_width="match_parent"
             android:layout_height="231dp"
             android:contextClickable="true"
-            android:text="short Overview of Infections Placeholder"
+
             android:textAlignment="center" />
 
         <Button
             android:id="@+id/emergencyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SEARCH FOR DOCTOR NEARBY" />
+            />
 
     </LinearLayout>
 

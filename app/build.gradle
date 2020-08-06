@@ -3,10 +3,12 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
-
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+    }
     defaultConfig {
         applicationId "com.example.codecamp2020"
-        minSdkVersion 29
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,7 +34,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.esri.arcgis.android:arcgis-android:10.2.6-2'
-
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.0.7'
 
 }
 buildscript {
@@ -41,7 +43,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath "com.android.tools.build:gradle:4.0.1"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -55,6 +57,7 @@ allprojects {
         maven {
             url 'http://dl.bintray.com/esri/arcgis'
         }
+        maven { url 'https://jitpack.io' }
     }
 }
 
