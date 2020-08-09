@@ -35,6 +35,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.esri.arcgis.android:arcgis-android:10.2.6-2'
     implementation 'com.github.denzcoskun:ImageSlideshow:0.0.7'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.android.volley:volley:1.1.1'
 
 }
 buildscript {
