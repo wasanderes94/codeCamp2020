@@ -48,7 +48,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.esri.arcgis.android:arcgis-android:10.2.6-2'
     implementation 'com.android.volley:volley:1.1.1'
-
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation(platform("com.fasterxml.jackson:jackson-bom:2.8.9"))
 
 
 

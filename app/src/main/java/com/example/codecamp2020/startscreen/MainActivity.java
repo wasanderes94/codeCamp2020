@@ -16,8 +16,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.codecamp2020.emergency.displayDoctorsActivity;
 import com.example.codecamp2020.R;
+import com.example.codecamp2020.util.newsfeed.Article;
 import com.example.codecamp2020.util.newsfeed.Publication;
 import com.example.codecamp2020.util.XMLParser.XMLParser;
+import com.google.gson.JsonObject;
 
 
 import org.json.JSONArray;
@@ -28,8 +30,12 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -39,6 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView location;
     private TextView infectionTextView;
     private RequestQueue requestQueue;
+    private List<Article> articles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,18 +113,37 @@ public class MainActivity extends Activity implements View.OnClickListener {
         DownloadXMLTask d = new DownloadXMLTask();
         d.execute("https://export.arxiv.org/api/query?search_query=all:COVID-19");
 
+
         requestQueue = Volley.newRequestQueue(this);
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://newsapi.org/v2/everything?q=corona&apiKey=86eeacda224b4c92a023e316d1404de5&language=de", null, new Response.Listener<JSONObject>() {
+
             @Override
             public void onResponse(JSONObject response) {
+
+                JSONArray jsonArray = null;
                 try {
-                    JSONArray jsonArray = response.getJSONArray("articles");
-                    for (int i = 0; i<jsonArray.length(); i++){
+                    jsonArray = response.getJSONArray("articles");
+                    for (int i = 0; i<jsonArray.length(); i++) {
                         JSONObject article = jsonArray.getJSONObject(i);
+                        Date date = Date.from(Instant.parse(article.getString("publishedAt")));
+                        JSONObject object = (JSONObject) article.get("source");
+                        Article a = new Article( object.getString("name"),
+                                article.getString("author"),
+                                article.getString("title"),
+                                article.getString("description"),
+                                new URL(article.getString("url")),
+                                new URL(article.getString("urlToImage")),
+                                date,
+                                article.getString("content"));
+                        articles.add(a);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
                 }
+
 
             }
         }, new Response.ErrorListener() {
